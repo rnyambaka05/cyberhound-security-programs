@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Cyber Hound | Security Programs</title>
+<title>Cyber Hound Security Programs</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,466 +17,355 @@
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
     font-family:'Inter',sans-serif;
-    background:#07090d;
+    background:#050607;
     color:#f5f7fa;
     overflow-x:hidden;
-    line-height:1.6;
+    position:relative;
 }
 
-/* BACKGROUND */
+/* ATMOSPHERIC BACKGROUNDS */
 
 body::before{
     content:'';
     position:fixed;
-    width:700px;
-    height:700px;
-    background:radial-gradient(circle, rgba(255,0,60,0.10) 0%, transparent 70%);
-    top:-250px;
-    right:-200px;
-    z-index:-1;
+    width:1000px;
+    height:1000px;
+    background:radial-gradient(circle, rgba(209,0,40,0.18) 0%, transparent 70%);
+    top:-350px;
+    right:-250px;
+    z-index:-5;
 }
 
 body::after{
     content:'';
     position:fixed;
+    width:800px;
+    height:800px;
+    background:radial-gradient(circle, rgba(199,204,212,0.08) 0%, transparent 70%);
+    bottom:-300px;
+    left:-200px;
+    z-index:-5;
+}
+
+.grid{
+    position:fixed;
+    inset:0;
+    background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size:70px 70px;
+    opacity:0.15;
+    z-index:-6;
+}
+
+.glow{
+    position:fixed;
     width:500px;
     height:500px;
-    background:radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
-    bottom:-200px;
-    left:-150px;
-    z-index:-1;
+    border-radius:50%;
+    background:rgba(255,0,47,0.06);
+    filter:blur(120px);
+    z-index:-4;
+    animation:float 14s infinite ease-in-out;
 }
 
-/* NAV */
-
-.navbar{
-    width:100%;
-    padding:28px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    position:sticky;
-    top:0;
-    z-index:999;
-    backdrop-filter:blur(14px);
-    background:rgba(10,12,16,0.75);
-    border-bottom:1px solid rgba(255,255,255,0.06);
+.glow1{
+    top:10%;
+    left:-100px;
 }
 
-.logo{
-    font-size:1.2rem;
-    font-weight:700;
-    letter-spacing:1px;
+.glow2{
+    bottom:10%;
+    right:-100px;
+    animation-delay:4s;
 }
 
-.logo span{
-    color:#ff3b5f;
-}
-
-.nav-links{
-    display:flex;
-    gap:40px;
-}
-
-.nav-links a{
-    color:#d0d7e2;
-    text-decoration:none;
-    font-size:0.95rem;
-    transition:0.3s;
-}
-
-.nav-links a:hover{
-    color:#fff;
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-40px);}
+    100%{transform:translateY(0px);}
 }
 
 /* HERO */
 
 .hero{
-    min-height:90vh;
-    padding:120px 8%;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:70px;
-    align-items:center;
-}
-
-.hero-content{
-    max-width:700px;
-}
-
-.badge{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    padding:10px 18px;
-    border-radius:999px;
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.06);
-    margin-bottom:28px;
-    font-size:0.9rem;
-    color:#cdd4de;
-    backdrop-filter:blur(12px);
-}
-
-.badge::before{
-    content:'';
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:#ff3b5f;
-    box-shadow:0 0 12px #ff3b5f;
-}
-
-.hero h1{
-    font-size:4rem;
-    line-height:1.05;
-    margin-bottom:28px;
-    font-weight:800;
-    letter-spacing:-2px;
-}
-
-.hero p{
-    font-size:1.15rem;
-    color:#9ea7b5;
-    max-width:600px;
-    margin-bottom:40px;
-}
-
-.hero-buttons{
-    display:flex;
-    gap:18px;
-}
-
-.primary-btn,
-.secondary-btn{
-    padding:16px 28px;
-    border-radius:14px;
-    text-decoration:none;
-    font-weight:600;
-    transition:0.35s;
-}
-
-.primary-btn{
-    background:#ff3b5f;
-    color:white;
-    box-shadow:0 0 40px rgba(255,59,95,0.25);
-}
-
-.primary-btn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 0 60px rgba(255,59,95,0.45);
-}
-
-.secondary-btn{
-    border:1px solid rgba(255,255,255,0.08);
-    background:rgba(255,255,255,0.03);
-    color:white;
-    backdrop-filter:blur(12px);
-}
-
-.secondary-btn:hover{
-    background:rgba(255,255,255,0.06);
-}
-
-/* HERO VISUAL */
-
-.hero-visual{
+    padding:50px 5% 20px;
     position:relative;
+    text-align:center;
 }
 
-.hero-visual img{
+.logo{
     width:100%;
-    border-radius:28px;
-    object-fit:cover;
-    border:1px solid rgba(255,255,255,0.08);
-    box-shadow:
-    0 0 60px rgba(255,0,60,0.12),
-    0 40px 80px rgba(0,0,0,0.5);
+    max-width:700px;
+    margin:auto;
+    display:block;
+    filter:
+    drop-shadow(0 0 50px rgba(209,0,40,0.35))
+    drop-shadow(0 0 100px rgba(209,0,40,0.18));
+}
+
+.hero-text{
+    margin-top:25px;
+    max-width:850px;
+    margin-inline:auto;
+    color:#b7c0cb;
+    line-height:1.8;
+    font-size:1.05rem;
 }
 
 /* TRUST BAR */
 
-.trust-bar{
-    padding:32px 8%;
+.trust{
+    margin-top:35px;
     display:flex;
-    flex-wrap:wrap;
     justify-content:center;
-    gap:18px;
-    border-top:1px solid rgba(255,255,255,0.06);
-    border-bottom:1px solid rgba(255,255,255,0.06);
-    background:#0b0f14;
+    flex-wrap:wrap;
+    gap:14px;
 }
 
-.trust-bar span{
-    padding:14px 22px;
+.trust span{
+    padding:14px 18px;
     border-radius:14px;
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.05);
-    color:#d5dde7;
-    font-size:0.92rem;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(199,204,212,0.10);
+    color:#dde3ea;
+    font-size:0.88rem;
+    backdrop-filter:blur(12px);
+    box-shadow:0 0 25px rgba(255,255,255,0.02);
 }
 
-/* SECTION */
+/* VISUAL BACKGROUND IMAGES */
 
-.section{
-    padding:120px 8%;
+.bg-image{
+    position:absolute;
+    border-radius:28px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.08);
+    opacity:0.18;
+    z-index:-1;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
 }
 
-.section-heading{
-    margin-bottom:70px;
-    text-align:center;
+.bg-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-.section-heading h2{
-    font-size:2.8rem;
-    margin-bottom:18px;
+.bg1{
+    width:280px;
+    height:200px;
+    top:120px;
+    left:-60px;
 }
 
-.section-heading p{
-    color:#98a3b3;
-    max-width:760px;
-    margin:auto;
+.bg2{
+    width:260px;
+    height:180px;
+    top:180px;
+    right:-40px;
 }
 
-/* CARDS */
+.bg3{
+    width:240px;
+    height:170px;
+    bottom:100px;
+    left:30px;
+}
+
+.bg4{
+    width:260px;
+    height:190px;
+    bottom:120px;
+    right:20px;
+}
+
+.bg5{
+    width:220px;
+    height:160px;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    opacity:0.10;
+}
+
+/* PROGRAM CARDS */
+
+.programs{
+    min-height:100vh;
+    padding:40px 4% 80px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 
 .cards{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:30px;
+    gap:34px;
+    width:100%;
+    max-width:1800px;
+    align-items:stretch;
 }
 
 .card{
     position:relative;
-    padding:42px;
-    border-radius:28px;
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.07);
-    backdrop-filter:blur(20px);
-    transition:0.4s;
+    padding:38px;
+    border-radius:34px;
+    background:rgba(255,255,255,0.045);
+    border:1px solid rgba(199,204,212,0.10);
+    backdrop-filter:blur(24px);
     overflow:hidden;
+    box-shadow:
+    0 30px 80px rgba(0,0,0,0.55);
+    transition:0.45s;
+}
+
+.card::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:5px;
+    background:linear-gradient(90deg,#b30024,#ff002f);
 }
 
 .card:hover{
-    transform:translateY(-10px);
-    border-color:rgba(255,59,95,0.3);
+    transform:translateY(-14px) scale(1.02);
     box-shadow:
-    0 0 50px rgba(255,59,95,0.10),
-    0 30px 60px rgba(0,0,0,0.45);
+    0 0 90px rgba(209,0,40,0.18),
+    0 40px 100px rgba(0,0,0,0.7);
+    border-color:rgba(209,0,40,0.28);
 }
 
 .featured{
-    transform:scale(1.04);
-    border:1px solid rgba(255,59,95,0.28);
+    border:1px solid rgba(209,0,40,0.35);
     box-shadow:
-    0 0 70px rgba(255,59,95,0.14);
+    0 0 100px rgba(209,0,40,0.16),
+    0 40px 110px rgba(0,0,0,0.75);
+    transform:scale(1.03);
+}
+
+.featured:hover{
+    transform:scale(1.05) translateY(-10px);
 }
 
 .popular{
     position:absolute;
-    top:20px;
-    right:20px;
-    background:#ff3b5f;
+    top:22px;
+    right:22px;
+    background:#d10028;
     color:white;
-    padding:8px 14px;
+    padding:10px 15px;
     border-radius:999px;
-    font-size:0.75rem;
-    font-weight:600;
+    font-size:0.72rem;
+    font-weight:700;
+    letter-spacing:1px;
+    box-shadow:0 0 30px rgba(209,0,40,0.35);
 }
 
-.card h3{
-    font-size:1.8rem;
-    margin-bottom:20px;
+.card-logo{
+    width:64px;
+    margin-bottom:24px;
+    filter:drop-shadow(0 0 25px rgba(209,0,40,0.25));
+}
+
+.card h2{
+    font-size:2rem;
+    line-height:1.1;
+    margin-bottom:18px;
 }
 
 .price{
     font-size:3rem;
     font-weight:800;
-    margin-bottom:24px;
+    margin-bottom:20px;
+    color:white;
 }
 
 .price span{
-    font-size:1rem;
-    color:#9ea7b5;
+    font-size:0.95rem;
+    color:#9da7b3;
 }
 
-.card p{
-    color:#a9b3c1;
-    margin-bottom:24px;
+.subtitle{
+    color:#aeb7c2;
+    margin-bottom:28px;
+    line-height:1.7;
 }
 
-.card ul{
-    list-style:none;
-    margin-bottom:30px;
-}
+/* FEATURE GROUPS */
 
-.card ul li{
-    margin-bottom:14px;
-    color:#d9e0ea;
-    position:relative;
-    padding-left:24px;
-}
-
-.card ul li::before{
-    content:'•';
-    color:#ff3b5f;
-    position:absolute;
-    left:0;
-}
-
-.best-fit{
-    font-size:0.92rem;
-    color:#8f98a7;
+.group{
     margin-bottom:28px;
 }
 
-.card-btn{
-    display:inline-block;
-    width:100%;
-    text-align:center;
-    padding:16px;
-    border-radius:16px;
-    text-decoration:none;
-    background:#131923;
-    border:1px solid rgba(255,255,255,0.06);
-    color:white;
-    font-weight:600;
-    transition:0.3s;
-}
-
-.card-btn:hover{
-    background:#ff3b5f;
-}
-
-/* PROCESS */
-
-.process{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:24px;
-}
-
-.process-card{
-    padding:34px;
-    border-radius:22px;
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.06);
-}
-
-.process-card h3{
-    margin-bottom:16px;
-}
-
-/* TEAM */
-
-.team{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:30px;
-}
-
-.team-card{
-    text-align:center;
-    padding:42px;
-    border-radius:28px;
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.06);
-}
-
-.team-card img{
-    width:110px;
-    height:110px;
-    border-radius:50%;
-    object-fit:cover;
-    margin-bottom:24px;
-    border:2px solid rgba(255,255,255,0.08);
-}
-
-.team-card h3{
-    margin-bottom:10px;
-}
-
-.team-card p{
-    color:#a9b3c1;
-    margin-bottom:12px;
-}
-
-.team-card span{
-    color:#ff8097;
+.group-title{
+    color:#ff002f;
     font-size:0.9rem;
+    letter-spacing:1px;
+    font-weight:700;
+    margin-bottom:14px;
+    text-transform:uppercase;
+}
+
+.group ul{
+    list-style:none;
+}
+
+.group ul li{
+    position:relative;
+    padding-left:22px;
+    margin-bottom:11px;
+    color:#e6eaef;
+    font-size:0.92rem;
+    line-height:1.5;
+}
+
+.group ul li::before{
+    content:'';
+    position:absolute;
+    left:0;
+    top:10px;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#d10028;
+    box-shadow:0 0 10px rgba(209,0,40,0.5);
 }
 
 /* FOOTER */
 
 footer{
-    padding:70px 8%;
+    padding:40px 5% 70px;
     text-align:center;
-    border-top:1px solid rgba(255,255,255,0.06);
-    color:#8892a0;
+    color:#8993a0;
+}
+
+footer img{
+    width:220px;
+    margin-bottom:22px;
+    filter:drop-shadow(0 0 40px rgba(209,0,40,0.20));
 }
 
 /* MOBILE */
 
-@media(max-width:1100px){
-
-.hero{
-    grid-template-columns:1fr;
-}
+@media(max-width:1500px){
 
 .cards{
     grid-template-columns:1fr;
-}
-
-.process{
-    grid-template-columns:1fr 1fr;
-}
-
-.team{
-    grid-template-columns:1fr;
+    max-width:700px;
 }
 
 .featured{
     transform:none;
 }
 
-.hero h1{
-    font-size:3rem;
-}
-
-}
-
-@media(max-width:700px){
-
-.nav-links{
+.bg-image{
     display:none;
-}
-
-.hero{
-    padding-top:80px;
-}
-
-.hero h1{
-    font-size:2.4rem;
-}
-
-.process{
-    grid-template-columns:1fr;
-}
-
-.hero-buttons{
-    flex-direction:column;
-}
-
-.primary-btn,
-.secondary-btn{
-    width:100%;
-    text-align:center;
 }
 
 }
@@ -486,53 +375,42 @@ footer{
 
 <body>
 
-<nav class="navbar">
+<div class="grid"></div>
 
-<div class="logo">
-Cyber <span>Hound</span>
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+<!-- BACKGROUND VISUALS -->
+
+<div class="bg-image bg1">
+<img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1400&auto=format&fit=crop">
 </div>
 
-<div class="nav-links">
-<a href="#programs">Programs</a>
-<a href="#process">Process</a>
-<a href="#team">Team</a>
+<div class="bg-image bg2">
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1400&auto=format&fit=crop">
 </div>
 
-</nav>
+<div class="bg-image bg3">
+<img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1400&auto=format&fit=crop">
+</div>
+
+<div class="bg-image bg4">
+<img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1400&auto=format&fit=crop">
+</div>
+
+<div class="bg-image bg5">
+<img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1400&auto=format&fit=crop">
+</div>
 
 <section class="hero">
 
-<div class="hero-content">
+<img src="assets/images/cyberhound-logo.png" class="logo">
 
-<div class="badge">
-Enterprise Security Operations
+<div class="hero-text">
+Enterprise cybersecurity, compliance, monitoring, and managed security operations designed to strengthen infrastructure, reduce organizational risk, and support long-term operational resilience.
 </div>
 
-<h1>
-Security & compliance programs for modern SaaS companies.
-</h1>
-
-<p>
-We help organizations become secure, compliant, and enterprise-ready —
-without hiring a full cybersecurity department.
-</p>
-
-<div class="hero-buttons">
-<a href="#programs" class="primary-btn">Explore Programs</a>
-<a href="#team" class="secondary-btn">Meet The Team</a>
-</div>
-
-</div>
-
-<div class="hero-visual">
-
-<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1600&auto=format&fit=crop">
-
-</div>
-
-</section>
-
-<section class="trust-bar">
+<div class="trust">
 
 <span>SOC 2</span>
 <span>ISO 27001</span>
@@ -542,219 +420,175 @@ without hiring a full cybersecurity department.
 <span>Splunk</span>
 <span>NIST</span>
 <span>OWASP</span>
+<span>SentinelOne</span>
+<span>Microsoft Purview</span>
+
+</div>
 
 </section>
 
-<section class="section" id="programs">
-
-<div class="section-heading">
-<h2>Security & Compliance Programs</h2>
-
-<p>
-Structured security operations built for enterprise readiness,
-operational visibility, and long-term resilience.
-</p>
-</div>
+<section class="programs">
 
 <div class="cards">
 
+<!-- CARD 1 -->
+
 <div class="card">
 
-<h3>Security Foundation</h3>
+<img src="assets/images/cyberhound-logo.png" class="card-logo">
+
+<h2>Security Foundation</h2>
 
 <div class="price">
 $4,800 <span>/ month</span>
 </div>
 
-<p>
+<div class="subtitle">
 Establish a secure, audit-ready baseline.
-</p>
+</div>
+
+<div class="group">
+<div class="group-title">Security Assessment</div>
 
 <ul>
-<li>Security Assessment & Gap Analysis</li>
-<li>Penetration Testing</li>
-<li>Microsoft 365 Security Hardening</li>
-<li>Compliance Foundation</li>
-<li>Audit-ready documentation</li>
+<li>Full risk assessment & security review</li>
+<li>SOC 2 / ISO 27001 / NIST gap analysis</li>
+<li>Risk register & vulnerability prioritization</li>
+<li>Security posture evaluation</li>
 </ul>
-
-<div class="best-fit">
-Best for early-stage & scaling organizations.
 </div>
 
-<a href="#" class="card-btn">
-Schedule Consultation
-</a>
+<div class="group">
+<div class="group-title">Penetration Testing</div>
+
+<ul>
+<li>OWASP Top 10 testing</li>
+<li>NIST 800-115 methodology</li>
+<li>Manual + automated testing</li>
+<li>CVSS risk scoring</li>
+<li>Technical & executive reports</li>
+</ul>
+</div>
+
+<div class="group">
+<div class="group-title">Microsoft Security</div>
+
+<ul>
+<li>Microsoft 365 hardening</li>
+<li>Entra ID MFA & Conditional Access</li>
+<li>PIM deployment</li>
+<li>Exchange / Teams / SharePoint security</li>
+<li>Intune device compliance setup</li>
+</ul>
+</div>
 
 </div>
+
+<!-- CARD 2 -->
 
 <div class="card featured">
 
 <div class="popular">
-Most Popular
+MOST POPULAR
 </div>
 
-<h3>Growth & Compliance Accelerator</h3>
+<img src="assets/images/cyberhound-logo.png" class="card-logo">
+
+<h2>Growth & Compliance Accelerator</h2>
 
 <div class="price">
 $10,300 <span>/ month</span>
 </div>
 
-<p>
+<div class="subtitle">
 Scale securely while staying enterprise-ready.
-</p>
+</div>
+
+<div class="group">
+<div class="group-title">Advanced Security</div>
 
 <ul>
-<li>Microsoft Defender XDR</li>
-<li>Purview + DLP deployment</li>
-<li>Continuous Compliance Management</li>
-<li>SIEM implementation</li>
-<li>Quarterly Penetration Testing</li>
-<li>Executive Reporting</li>
+<li>Microsoft Defender XDR deployment</li>
+<li>Endpoint / Identity / Cloud protection</li>
+<li>Advanced architecture hardening</li>
+<li>Threat exposure reduction</li>
 </ul>
-
-<div class="best-fit">
-Best for growth-stage SaaS & enterprise environments.
 </div>
 
-<a href="#" class="card-btn">
-Schedule Consultation
-</a>
+<div class="group">
+<div class="group-title">Compliance Operations</div>
+
+<ul>
+<li>Continuous compliance management</li>
+<li>Full SOC 2 / ISO / NIST control mapping</li>
+<li>Evidence collection & audit preparation</li>
+<li>Remediation roadmap execution</li>
+</ul>
+</div>
+
+<div class="group">
+<div class="group-title">SIEM & Monitoring</div>
+
+<ul>
+<li>Microsoft Sentinel / Splunk / QRadar</li>
+<li>Centralized logging & alerting</li>
+<li>Incident response workflows</li>
+<li>Quarterly penetration testing</li>
+<li>Executive security reporting</li>
+</ul>
+</div>
 
 </div>
+
+<!-- CARD 3 -->
 
 <div class="card">
 
-<h3>Managed Security Command Center</h3>
+<img src="assets/images/cyberhound-logo.png" class="card-logo">
+
+<h2>Managed Security Command Center</h2>
 
 <div class="price">
 $14,500 <span>/ month</span>
 </div>
 
-<p>
+<div class="subtitle">
 Fully managed 24/7 security operations.
-</p>
+</div>
+
+<div class="group">
+<div class="group-title">24/7 SOC Operations</div>
 
 <ul>
-<li>24/7 SOC Monitoring</li>
-<li>Threat Detection & Response</li>
-<li>Threat Hunting</li>
-<li>CrowdStrike / SentinelOne</li>
-<li>Dedicated Security Team</li>
-<li>Compliance Maintenance</li>
+<li>Real-time threat detection</li>
+<li>Continuous infrastructure monitoring</li>
+<li>Alert triage & escalation</li>
+<li>Incident response & containment</li>
 </ul>
-
-<div class="best-fit">
-Best for enterprise organizations requiring continuous coverage.
 </div>
 
-<a href="#" class="card-btn">
-Schedule Consultation
-</a>
+<div class="group">
+<div class="group-title">Threat Operations</div>
 
+<ul>
+<li>Threat hunting & behavioral analysis</li>
+<li>Advanced attack pattern detection</li>
+<li>EDR + threat intelligence integration</li>
+<li>CrowdStrike / SentinelOne deployment</li>
+</ul>
 </div>
 
+<div class="group">
+<div class="group-title">Enterprise Advisory</div>
+
+<ul>
+<li>Dedicated security advisory support</li>
+<li>Monthly reporting & strategy sessions</li>
+<li>Continuous optimization</li>
+<li>SOC 2 Type I / II readiness support</li>
+<li>Long-term compliance maintenance</li>
+</ul>
 </div>
-
-</section>
-
-<section class="section" id="process">
-
-<div class="section-heading">
-<h2>How We Work</h2>
-</div>
-
-<div class="process">
-
-<div class="process-card">
-<h3>Assessment</h3>
-<p>
-Risk analysis, infrastructure reviews, and compliance gap identification.
-</p>
-</div>
-
-<div class="process-card">
-<h3>Security Alignment</h3>
-<p>
-Framework alignment across SOC 2, ISO 27001, NIST, and OWASP.
-</p>
-</div>
-
-<div class="process-card">
-<h3>Monitoring & Protection</h3>
-<p>
-Deployment of monitoring, detection, and protection systems.
-</p>
-</div>
-
-<div class="process-card">
-<h3>Ongoing Operations</h3>
-<p>
-Continuous security operations, reporting, optimization, and support.
-</p>
-</div>
-
-</div>
-
-</section>
-
-<section class="section" id="team">
-
-<div class="section-heading">
-<h2>Meet The Security Team</h2>
-
-<p>
-Experienced operators focused on enterprise security maturity and compliance.
-</p>
-</div>
-
-<div class="team">
-
-<div class="team-card">
-
-<img src="https://randomuser.me/api/portraits/men/32.jpg">
-
-<h3>Vlatko</h3>
-
-<p>
-Security Architecture & Compliance
-</p>
-
-<span>
-SOC 2 • ISO 27001 • Azure Security
-</span>
-
-</div>
-
-<div class="team-card">
-
-<img src="https://randomuser.me/api/portraits/men/45.jpg">
-
-<h3>Med</h3>
-
-<p>
-Threat Detection & SOC Operations
-</p>
-
-<span>
-Sentinel • CrowdStrike • SIEM
-</span>
-
-</div>
-
-<div class="team-card">
-
-<img src="https://randomuser.me/api/portraits/men/68.jpg">
-
-<h3>Bilal</h3>
-
-<p>
-Cloud Security & Infrastructure
-</p>
-
-<span>
-Microsoft 365 • Defender XDR • Intune
-</span>
 
 </div>
 
@@ -764,14 +598,10 @@ Microsoft 365 • Defender XDR • Intune
 
 <footer>
 
-<p>
-security@cyberhound.io
-</p>
-
-<br>
+<img src="assets/images/cyberhound-logo.png">
 
 <p>
-© 2026 Cyber Hound Security Operations
+© 2026 Cyber Hound Security LLC. All rights reserved. Cyber Hound Security Programs are designed to provide comprehensive cybersecurity solutions for enterprises of all sizes. Our services include security assessments, penetration testing, compliance management, and 24/7 security operations to help organizations strengthen their security posture and achieve long-term resilience in an ever-evolving threat landscape.
 </p>
 
 </footer>
