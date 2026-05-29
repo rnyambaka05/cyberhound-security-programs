@@ -25,8 +25,6 @@ body{
    position:relative;
 }
 
-/* GLOBAL ATMOSPHERE */
-
 body::before{
    content:'';
    position:fixed;
@@ -55,13 +53,10 @@ body::after{
    background-image:
    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-
    background-size:70px 70px;
    opacity:0.14;
    z-index:-6;
 }
-
-/* AMBIENT GLOW */
 
 .glow{
    position:fixed;
@@ -95,7 +90,7 @@ body::after{
 
 .hero{
    position:relative;
-   padding:110px 5% 90px;
+   padding:110px 5% 150px;
    text-align:center;
    overflow:hidden;
 
@@ -103,22 +98,20 @@ body::after{
    linear-gradient(
    to bottom,
    rgba(5,6,7,0.45),
-   rgba(5,6,7,0.80)
+   rgba(5,6,7,0.82),
+   rgba(5,6,7,0.98)
    ),
-
    url('assets/images/enterprise-network-bg.avif');
 
    background-size:cover;
    background-position:center;
    background-repeat:no-repeat;
 
-   border-bottom:1px solid rgba(255,255,255,0.06);
+   border-bottom:none;
 
    box-shadow:
-   inset 0 -140px 140px rgba(5,6,7,0.98);
+   inset 0 -190px 170px rgba(5,6,7,1);
 }
-
-/* HERO OVERLAY GLOW */
 
 .hero::before{
    content:'';
@@ -131,7 +124,22 @@ body::after{
    z-index:0;
 }
 
-/* LOGO */
+.hero::after{
+   content:'';
+   position:absolute;
+   left:0;
+   right:0;
+   bottom:-1px;
+   height:180px;
+   background:linear-gradient(
+      to bottom,
+      rgba(5,6,7,0),
+      rgba(5,6,7,0.92) 58%,
+      #050607 100%
+   );
+   z-index:1;
+   pointer-events:none;
+}
 
 .logo{
    width:100%;
@@ -154,24 +162,31 @@ body::after{
    drop-shadow(0 0 150px rgba(209,0,40,0.14));
 }
 
-/* HERO TEXT */
-
-.hero-text{
-   margin-top:30px;
-   max-width:900px;
-   margin-inline:auto;
-
-   color:#d9e0e8;
-   line-height:1.9;
-   font-size:1.08rem;
-
+.hero-title{
+   margin-top:36px;
    position:relative;
    z-index:3;
-
-   text-shadow:0 0 25px rgba(0,0,0,0.45);
+   font-size:clamp(2.2rem, 4.5vw, 4.25rem);
+   line-height:0.98;
+   letter-spacing:-0.065em;
+   font-weight:800;
+   color:#ffffff;
+   text-shadow:
+   0 0 30px rgba(0,0,0,0.55),
+   0 0 42px rgba(209,0,40,0.16);
 }
 
-/* TRUST BAR */
+.hero-text{
+   margin-top:24px;
+   max-width:870px;
+   margin-inline:auto;
+   color:#d9e0e8;
+   line-height:1.85;
+   font-size:1.08rem;
+   position:relative;
+   z-index:3;
+   text-shadow:0 0 25px rgba(0,0,0,0.45);
+}
 
 .trust{
    margin-top:42px;
@@ -186,17 +201,11 @@ body::after{
 .trust span{
    padding:15px 20px;
    border-radius:16px;
-
    background:rgba(255,255,255,0.06);
-
    border:1px solid rgba(255,255,255,0.10);
-
    color:#f2f5f8;
-
    font-size:0.88rem;
-
    backdrop-filter:blur(18px);
-
    box-shadow:
    0 0 25px rgba(255,255,255,0.03),
    0 0 40px rgba(209,0,40,0.08);
@@ -206,286 +215,323 @@ body::after{
 
 .programs{
    position:relative;
-   min-height:100vh;
-
-   padding:90px 4% 120px;
-
-   display:flex;
-   justify-content:center;
-   align-items:center;
+   padding:34px 5% 120px;
+   margin-top:-70px;
+   background:
+   linear-gradient(
+      to bottom,
+      rgba(5,6,7,0),
+      #050607 105px,
+      #050607 100%
+   );
 }
 
-/* CARDS */
-
-.cards{
-   display:grid;
-   grid-template-columns:repeat(3,1fr);
-
-   gap:38px;
-
+.programs-shell{
    width:100%;
-   max-width:1850px;
+   max-width:1220px;
+   margin:0 auto;
+   position:relative;
+   z-index:3;
+}
 
+.program-stack{
+   display:flex;
+   flex-direction:column;
+   gap:38px;
+}
+
+/* PROGRAM CARD */
+
+.program-card{
+   position:relative;
+   overflow:hidden;
+   border-radius:38px;
+   padding:46px;
+   min-height:610px;
+
+   display:grid;
+   grid-template-columns:0.82fr 1.18fr;
+   gap:42px;
    align-items:stretch;
 
+   background:
+   linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.034)),
+   rgba(8,10,13,0.88);
+
+   border:1px solid rgba(255,255,255,0.13);
+   backdrop-filter:blur(30px);
+
+   box-shadow:
+   0 36px 120px rgba(0,0,0,0.76),
+   inset 0 1px 0 rgba(255,255,255,0.09);
+}
+
+.program-card::before{
+   content:'';
+   position:absolute;
+   inset:0;
+   background:
+   radial-gradient(circle at 16% 0%, rgba(255,255,255,0.08), transparent 28%),
+   radial-gradient(circle at 90% 8%, rgba(209,0,40,0.15), transparent 38%);
+   pointer-events:none;
+}
+
+.program-card::after{
+   content:'';
+   position:absolute;
+   top:0;
+   left:0;
+   right:0;
+   height:4px;
+   background:linear-gradient(90deg, rgba(209,0,40,0.10), #d10028, rgba(255,255,255,0.22), rgba(209,0,40,0.10));
+}
+
+.program-card > *{
    position:relative;
    z-index:2;
 }
 
-.card{
-   position:relative;
-
-   padding:42px;
-
-   border-radius:38px;
-
-   background:rgba(255,255,255,0.05);
-
-   border:1px solid rgba(255,255,255,0.10);
-
-   backdrop-filter:blur(26px);
-
-   overflow:hidden;
-
-   transition:0.45s;
-
+.program-card.recommended{
+   border:1px solid rgba(255,255,255,0.18);
+   background:
+   linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04)),
+   linear-gradient(135deg, rgba(209,0,40,0.10), rgba(5,6,7,0.78));
    box-shadow:
-   0 40px 100px rgba(0,0,0,0.65);
+   0 0 0 1px rgba(209,0,40,0.22),
+   0 0 115px rgba(209,0,40,0.16),
+   0 38px 130px rgba(0,0,0,0.80);
 }
 
-/* CARD GLOW */
-
-.card::before{
-   content:'';
-
-   position:absolute;
-
-   top:0;
-   left:0;
-
-   width:100%;
+.program-card.recommended::after{
    height:5px;
-
-   background:
-   linear-gradient(90deg,#b30024,#ff002f);
+   background:linear-gradient(90deg, #6d0014, #d10028, #ff5b73, #d10028, #6d0014);
 }
 
-.card::after{
-   content:'';
+/* LEFT SIDE */
 
-   position:absolute;
-   inset:0;
-
-   background:
-   radial-gradient(circle at top,
-   rgba(209,0,40,0.10),
-   transparent 60%);
-
-   opacity:0;
-
-   transition:0.45s;
+.card-main{
+   display:flex;
+   flex-direction:column;
+   border-right:1px solid rgba(255,255,255,0.09);
+   padding-right:38px;
 }
 
-.card:hover::after{
-   opacity:1;
+.badges{
+   display:flex;
+   flex-wrap:wrap;
+   gap:10px;
+   margin-bottom:24px;
 }
 
-.card:hover{
-   transform:translateY(-14px) scale(1.02);
-
-   border-color:rgba(209,0,40,0.35);
-
-   box-shadow:
-   0 0 100px rgba(209,0,40,0.14),
-   0 50px 120px rgba(0,0,0,0.75);
-}
-
-.featured{
-   transform:scale(1.03);
-
-   border:1px solid rgba(209,0,40,0.35);
-
-   box-shadow:
-   0 0 120px rgba(209,0,40,0.14),
-   0 50px 130px rgba(0,0,0,0.80);
-}
-
-.featured:hover{
-   transform:scale(1.05) translateY(-12px);
-}
-
-/* BADGE */
-
-.popular{
-   position:absolute;
-
-   top:22px;
-   right:22px;
-
-   background:#d10028;
-
-   color:white;
-
-   padding:10px 15px;
-
+.badge{
+   display:inline-flex;
+   align-items:center;
+   justify-content:center;
+   padding:10px 14px;
    border-radius:999px;
-
-   font-size:0.72rem;
-
-   font-weight:700;
-
-   letter-spacing:1px;
-
-   box-shadow:
-   0 0 35px rgba(209,0,40,0.40);
-}
-
-/* CARD LOGO */
-
-.card-logo{
-   width:70px;
-
-   margin-bottom:26px;
-
-   filter:
-   drop-shadow(0 0 25px rgba(209,0,40,0.28));
-}
-
-/* HEADINGS */
-
-.card h2{
-   font-size:2.1rem;
-   line-height:1.1;
-
-   margin-bottom:20px;
-}
-
-.price{
-   font-size:3.1rem;
+   font-size:0.7rem;
    font-weight:800;
-
-   margin-bottom:22px;
-
-   color:white;
-}
-
-.price span{
-   font-size:0.95rem;
-   color:#a4aebb;
-}
-
-.subtitle{
-   color:#c3ccd6;
-
-   margin-bottom:32px;
-
-   line-height:1.8;
-}
-
-/* FEATURE GROUPS */
-
-.group{
-   margin-bottom:32px;
-}
-
-.group-title{
-   color:#ff002f;
-
-   font-size:0.88rem;
-
-   letter-spacing:1.5px;
-
-   font-weight:700;
-
-   margin-bottom:15px;
-
+   letter-spacing:1.35px;
    text-transform:uppercase;
+   background:rgba(255,255,255,0.07);
+   border:1px solid rgba(255,255,255,0.11);
+   color:#dce3eb;
+   white-space:nowrap;
 }
 
-.group ul{
-   list-style:none;
+.badge.red{
+   color:#fff;
+   background:linear-gradient(135deg, #96001c, #d10028);
+   border-color:rgba(255,255,255,0.16);
+   box-shadow:0 0 34px rgba(209,0,40,0.36);
 }
 
-.group ul li{
-   position:relative;
-
-   padding-left:24px;
-
-   margin-bottom:12px;
-
-   color:#edf2f7;
-
-   font-size:0.94rem;
-
-   line-height:1.6;
+.badge.gold{
+   color:#ffe8ad;
+   background:rgba(214,166,74,0.12);
+   border-color:rgba(214,166,74,0.28);
 }
 
-.group ul li::before{
+.program-card h2{
+   font-size:clamp(2.25rem, 4.4vw, 4rem);
+   line-height:0.96;
+   letter-spacing:-0.065em;
+   margin-bottom:30px;
+}
+
+.ideal-box{
+   margin-top:6px;
+   padding:26px;
+   border-radius:28px;
+   background:
+   linear-gradient(135deg, rgba(255,255,255,0.075), rgba(255,255,255,0.032));
+   border:1px solid rgba(255,255,255,0.09);
+}
+
+.ideal-box p{
+   color:#e4e9ef;
+   font-size:0.98rem;
+   line-height:1.75;
+}
+
+.price-row{
+   display:flex;
+   align-items:end;
+   gap:12px;
+   margin-top:30px;
+}
+
+.price-number{
+   font-size:clamp(2.75rem, 5vw, 4.4rem);
+   line-height:0.92;
+   font-weight:800;
+   letter-spacing:-0.065em;
+}
+
+.price-term{
+   color:#8e99a7;
+   font-size:1rem;
+   font-weight:600;
+   padding-bottom:7px;
+}
+
+/* RIGHT SIDE */
+
+.card-content{
+   display:flex;
+   flex-direction:column;
+   justify-content:space-between;
+   gap:28px;
+}
+
+.focus-block,
+.what-you-get{
+   padding:28px;
+   border-radius:28px;
+   background:
+   linear-gradient(135deg, rgba(255,255,255,0.075), rgba(255,255,255,0.032));
+   border:1px solid rgba(255,255,255,0.09);
+}
+
+.what-you-get{
+   background:
+   linear-gradient(135deg, rgba(209,0,40,0.13), rgba(255,255,255,0.04));
+   border:1px solid rgba(255,255,255,0.11);
+   box-shadow:inset 0 1px 0 rgba(255,255,255,0.075);
+}
+
+.section-label{
+   display:flex;
+   align-items:center;
+   gap:10px;
+   color:#ffffff;
+   font-size:0.76rem;
+   font-weight:800;
+   letter-spacing:1.8px;
+   text-transform:uppercase;
+   margin-bottom:18px;
+}
+
+.section-label::before{
    content:'';
-
-   position:absolute;
-
-   left:0;
-   top:11px;
-
-   width:8px;
-   height:8px;
-
-   border-radius:50%;
-
+   width:24px;
+   height:1px;
    background:#d10028;
+   box-shadow:0 0 18px rgba(209,0,40,0.8);
+}
 
-   box-shadow:
-   0 0 14px rgba(209,0,40,0.55);
+.focus-list{
+   display:flex;
+   flex-direction:column;
+   gap:18px;
+}
+
+.focus-row{
+   padding-bottom:18px;
+   border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.focus-row:last-child{
+   border-bottom:none;
+   padding-bottom:0;
+}
+
+.focus-row h3{
+   color:#ffffff;
+   font-size:0.95rem;
+   margin-bottom:9px;
+   letter-spacing:-0.01em;
+}
+
+.focus-row p{
+   color:#c6d0da;
+   font-size:0.9rem;
+   line-height:1.65;
+}
+
+.what-you-get p{
+   color:#e4e9ef;
+   font-size:0.98rem;
+   line-height:1.75;
 }
 
 /* FOOTER */
 
 footer{
-   padding:70px 5% 90px;
-
+   padding:38px 5% 55px;
    text-align:center;
-
-   color:#8d98a5;
-
-   position:relative;
-   z-index:2;
-}
-
-footer img{
-   width:240px;
-
-   margin-bottom:28px;
-
-   filter:
-   drop-shadow(0 0 45px rgba(209,0,40,0.22));
-}
-
-footer p{
-   max-width:1000px;
-   margin:auto;
-   line-height:1.8;
+   color:#76818f;
+   font-size:0.86rem;
+   letter-spacing:0.02em;
+   border-top:1px solid rgba(255,255,255,0.06);
+   background:#050607;
 }
 
 /* MOBILE */
 
-@media(max-width:1500px){
+@media(max-width:1180px){
 
-.cards{
+.program-card{
    grid-template-columns:1fr;
-   max-width:760px;
+   min-height:auto;
 }
 
-.featured{
-   transform:none;
+.card-main{
+   border-right:none;
+   border-bottom:1px solid rgba(255,255,255,0.09);
+   padding-right:0;
+   padding-bottom:34px;
 }
+
+}
+
+@media(max-width:700px){
 
 .hero{
    padding-top:90px;
+   padding-bottom:130px;
 }
 
 .logo{
    max-width:620px;
+}
+
+.hero-title{
+   font-size:clamp(2rem, 10vw, 3rem);
+}
+
+.programs{
+   padding:50px 4% 90px;
+   margin-top:-55px;
+}
+
+.program-card{
+   padding:28px;
+   border-radius:30px;
+}
+
+.trust span{
+   padding:12px 15px;
 }
 
 }
@@ -504,21 +550,21 @@ footer p{
 
 <img src="assets/images/cyberhound-logo.png" class="logo">
 
+<h1 class="hero-title">Security & Compliance Programs</h1>
+
 <div class="hero-text">
-Enterprise cybersecurity, compliance, monitoring, and managed security operations designed to strengthen infrastructure, reduce organizational risk, and support long-term operational resilience.
+Security operations, compliance readiness, and continuous monitoring for growing SaaS organizations.
 </div>
 
 <div class="trust">
 
 <span>SOC 2</span>
-<span>ISO 27001</span>
-<span>Microsoft Sentinel</span>
-<span>CrowdStrike</span>
-<span>Defender XDR</span>
-<span>Splunk</span>
 <span>NIST</span>
-<span>OWASP</span>
-<span>SentinelOne</span>
+<span>Microsoft 365</span>
+<span>Microsoft Sentinel</span>
+<span>Security Monitoring</span>
+<span>Threat Detection</span>
+<span>Penetration Testing</span>
 <span>Microsoft Purview</span>
 
 </div>
@@ -527,165 +573,204 @@ Enterprise cybersecurity, compliance, monitoring, and managed security operation
 
 <section class="programs">
 
-<div class="cards">
+<div class="programs-shell">
 
-<!-- CARD 1 -->
+<div class="program-stack">
 
-<div class="card">
+<!-- MANAGED SECURITY COMMAND CENTER -->
 
-<img src="assets/images/cyberhound-logo.png" class="card-logo">
+<div class="program-card">
 
-<h2>Security Foundation</h2>
+<div class="card-main">
 
-<div class="price">
-$4,800 <span>/ month</span>
+<div class="badges">
+<span class="badge gold">Fully Managed Security Operations</span>
 </div>
-
-<div class="subtitle">
-Establish a secure, audit-ready baseline.
-</div>
-
-<div class="group">
-<div class="group-title">Security Assessment</div>
-
-<ul>
-<li>Full risk assessment & security review</li>
-<li>SOC 2 / ISO 27001 / NIST gap analysis</li>
-<li>Risk register & vulnerability prioritization</li>
-<li>Security posture evaluation</li>
-</ul>
-</div>
-
-<div class="group">
-<div class="group-title">Penetration Testing</div>
-
-<ul>
-<li>OWASP Top 10 testing</li>
-<li>NIST 800-115 methodology</li>
-<li>Manual + automated testing</li>
-<li>CVSS risk scoring</li>
-<li>Technical & executive reports</li>
-</ul>
-</div>
-
-<div class="group">
-<div class="group-title">Microsoft Security</div>
-
-<ul>
-<li>Microsoft 365 hardening</li>
-<li>Entra ID MFA & Conditional Access</li>
-<li>PIM deployment</li>
-<li>Exchange / Teams / SharePoint security</li>
-<li>Intune device compliance setup</li>
-</ul>
-</div>
-
-</div>
-
-<!-- CARD 2 -->
-
-<div class="card featured">
-
-<div class="popular">
-MOST POPULAR
-</div>
-
-<img src="assets/images/cyberhound-logo.png" class="card-logo">
-
-<h2>Growth & Compliance Accelerator</h2>
-
-<div class="price">
-$10,300 <span>/ month</span>
-</div>
-
-<div class="subtitle">
-Scale securely while staying enterprise-ready.
-</div>
-
-<div class="group">
-<div class="group-title">Advanced Security</div>
-
-<ul>
-<li>Microsoft Defender XDR deployment</li>
-<li>Endpoint / Identity / Cloud protection</li>
-<li>Advanced architecture hardening</li>
-<li>Threat exposure reduction</li>
-</ul>
-</div>
-
-<div class="group">
-<div class="group-title">Compliance Operations</div>
-
-<ul>
-<li>Continuous compliance management</li>
-<li>Full SOC 2 / ISO / NIST control mapping</li>
-<li>Evidence collection & audit preparation</li>
-<li>Remediation roadmap execution</li>
-</ul>
-</div>
-
-<div class="group">
-<div class="group-title">SIEM & Monitoring</div>
-
-<ul>
-<li>Microsoft Sentinel / Splunk / QRadar</li>
-<li>Centralized logging & alerting</li>
-<li>Incident response workflows</li>
-<li>Quarterly penetration testing</li>
-<li>Executive security reporting</li>
-</ul>
-</div>
-
-</div>
-
-<!-- CARD 3 -->
-
-<div class="card">
-
-<img src="assets/images/cyberhound-logo.png" class="card-logo">
 
 <h2>Managed Security Command Center</h2>
 
-<div class="price">
-$14,500 <span>/ month</span>
+<div class="ideal-box">
+<div class="section-label">Ideal For</div>
+<p>
+Organizations that have reached the point where security can no longer be handled reactively and need continuous oversight across their environment.
+</p>
 </div>
 
-<div class="subtitle">
-Fully managed 24/7 security operations.
+<div class="price-row">
+<div class="price-number">$9,500</div>
+<div class="price-term">/mo</div>
 </div>
 
-<div class="group">
-<div class="group-title">24/7 SOC Operations</div>
-
-<ul>
-<li>Real-time threat detection</li>
-<li>Continuous infrastructure monitoring</li>
-<li>Alert triage & escalation</li>
-<li>Incident response & containment</li>
-</ul>
 </div>
 
-<div class="group">
-<div class="group-title">Threat Operations</div>
+<div class="card-content">
 
-<ul>
-<li>Threat hunting & behavioral analysis</li>
-<li>Advanced attack pattern detection</li>
-<li>EDR + threat intelligence integration</li>
-<li>CrowdStrike / SentinelOne deployment</li>
-</ul>
+<div class="focus-block">
+<div class="section-label">Program Focus</div>
+
+<div class="focus-list">
+
+<div class="focus-row">
+<h3>Security Operations</h3>
+<p>24/7 Security Monitoring · Real-Time Threat Detection · Security Alert Response · Incident Response and Escalation</p>
 </div>
 
-<div class="group">
-<div class="group-title">Enterprise Advisory</div>
+<div class="focus-row">
+<h3>Threat Operations</h3>
+<p>Proactive Threat Hunting · Advanced SIEM Management · Threat Intelligence Integration</p>
+</div>
 
-<ul>
-<li>Dedicated security advisory support</li>
-<li>Monthly reporting & strategy sessions</li>
-<li>Continuous optimization</li>
-<li>SOC 2 Type I / II readiness support</li>
-<li>Long-term compliance maintenance</li>
-</ul>
+<div class="focus-row">
+<h3>Compliance & Governance</h3>
+<p>Audit Readiness Support · Compliance Advisory · Microsoft 365 Security Hardening</p>
+</div>
+
+<div class="focus-row">
+<h3>Executive Validation</h3>
+<p>Annual Penetration Testing · Advanced Security Validation · Executive Security Reviews · Employee Phishing Training</p>
+</div>
+
+</div>
+</div>
+
+<div class="what-you-get">
+<div class="section-label">What You Get</div>
+<p>
+A dedicated security operations function that continuously monitors, investigates, and responds to threats without the overhead of building an internal SOC.
+</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- GROWTH & COMPLIANCE ACCELERATOR -->
+
+<div class="program-card recommended">
+
+<div class="card-main">
+
+<div class="badges">
+<span class="badge red">Built For Scaling SaaS Teams</span>
+</div>
+
+<h2>Growth & Compliance Accelerator</h2>
+
+<div class="ideal-box">
+<div class="section-label">Ideal For</div>
+<p>
+Growing SaaS companies preparing for larger customers, security reviews, compliance requirements, and increased operational complexity.
+</p>
+</div>
+
+<div class="price-row">
+<div class="price-number">$5,500</div>
+<div class="price-term">/mo</div>
+</div>
+
+</div>
+
+<div class="card-content">
+
+<div class="focus-block">
+<div class="section-label">Program Focus</div>
+
+<div class="focus-list">
+
+<div class="focus-row">
+<h3>Monitoring</h3>
+<p>24/7 Security Monitoring · Real-Time Threat Detection · Security Alert Response · Incident Escalation</p>
+</div>
+
+<div class="focus-row">
+<h3>SOC 2 Readiness</h3>
+<p>SOC 2 Gap Assessment · SOC 2 Control Mapping · Audit Readiness Support · Microsoft 365 Security Hardening</p>
+</div>
+
+<div class="focus-row">
+<h3>Compliance Planning</h3>
+<p>Risk Assessment · Remediation Roadmap</p>
+</div>
+
+<div class="focus-row">
+<h3>Security Validation</h3>
+<p>SOC 2 Readiness Penetration Testing · Security Validation Assessment · Executive Security Reporting · Employee Phishing Training</p>
+</div>
+
+</div>
+</div>
+
+<div class="what-you-get">
+<div class="section-label">What You Get</div>
+<p>
+Continuous monitoring, SOC 2 readiness support, and security validation designed to strengthen trust and reduce risk as the company scales.
+</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- FOUNDATION SECURITY -->
+
+<div class="program-card">
+
+<div class="card-main">
+
+<div class="badges">
+<span class="badge">Security Visibility & Readiness</span>
+</div>
+
+<h2>Foundation Security</h2>
+
+<div class="ideal-box">
+<div class="section-label">Ideal For</div>
+<p>
+Organizations that want ongoing visibility into security risks, vulnerabilities, and remediation priorities before moving into deeper monitoring or compliance support.
+</p>
+</div>
+
+<div class="price-row">
+<div class="price-number">$2,500</div>
+<div class="price-term">/mo</div>
+</div>
+
+</div>
+
+<div class="card-content">
+
+<div class="focus-block">
+<div class="section-label">Program Focus</div>
+
+<div class="focus-list">
+
+<div class="focus-row">
+<h3>Security Visibility</h3>
+<p>Monthly Vulnerability Scanning · Quarterly Vulnerability Assessment</p>
+</div>
+
+<div class="focus-row">
+<h3>Risk Assessment</h3>
+<p>Risk Assessment · Remediation Roadmap</p>
+</div>
+
+<div class="focus-row">
+<h3>Executive Oversight</h3>
+<p>Executive Security Reporting · Security Validation Review · Cybersecurity Awareness Guidance · Employee Phishing Training</p>
+</div>
+
+</div>
+</div>
+
+<div class="what-you-get">
+<div class="section-label">What You Get</div>
+<p>
+An ongoing view of security risks, vulnerabilities, and remediation priorities so leadership can make informed security decisions with confidence.
+</p>
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -695,13 +780,7 @@ Fully managed 24/7 security operations.
 </section>
 
 <footer>
-
-<img src="assets/images/cyberhound-logo.png">
-
-<p>
-© 2026 Cyber Hound Security LLC. All rights reserved. Cyber Hound Security Programs are designed to provide comprehensive cybersecurity solutions for enterprises of all sizes. Our services include security assessments, penetration testing, compliance management, and 24/7 security operations to help organizations strengthen their security posture and achieve long-term resilience in an ever-evolving threat landscape.
-</p>
-
+© 2026 Cyber Hound Security LLC. All rights reserved.
 </footer>
 
 </body>
